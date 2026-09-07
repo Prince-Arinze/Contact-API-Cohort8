@@ -76,13 +76,13 @@ git branch
 
 The Contact Management API should have the following features:
 
-* Add a contact
-* Update a contact
-* Delete a contact
+* Add a contact (done)
+* Update a contact (done)
+* Delete a contact (done)
 * Get a particular contact
-* Search contacts
-* Add tags such as family, friend, work, etc.
-* Favorite a contact
+* Search contacts (done)
+* Add tags such as family, friend, work, etc. (done)
+* Favorite a contact (done)
 
 You are free to decide how you want to structure and implement the API.
 
