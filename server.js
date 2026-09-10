@@ -1,7 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
-import { dbConnection } from "./config/db";
-import contactRouter from "./routes/contactRoute";
+import { dbConnection } from "./config/db.js";
+import contactRouter from "./routes/contactRoute.js";
 
 config();
 
@@ -23,7 +23,7 @@ const startServer = async () => {
     try {
         await dbConnection();
         app.listen(process.env.PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
+            console.log(`Server is running on port ${process.env.PORT}`);
         })
     } catch (err) {
         console.error(err.message);

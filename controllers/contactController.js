@@ -1,9 +1,10 @@
-const { Contact } = require("../models/contactModel");
+import { Contact } from "../models/contactModel.js";
+
 
 
 export const createContact = async (req, res) => {
     try {
-        const contact = await Contact.create(req.body);
+        const contact = await Contact.reate(req.body);
         res.status(201).json({
             error: false,
             meassage: "Contact has been created successfully",
