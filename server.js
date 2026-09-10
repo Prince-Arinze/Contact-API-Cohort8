@@ -1,9 +1,13 @@
-const express = require("express");
+import express from "express";
+import { config } from "dotenv";
+import { dbConnection } from "./config/db";
+import contactRouter from "./routes/contactRoute";
+
+config();
 
 const app = express();
 
 
-const PORT = 8080;
 
 app.get(`/`, (req, res) => {
     res.status(200).json({
@@ -13,6 +17,18 @@ app.get(`/`, (req, res) => {
 
 app.use(express.json());
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-})
+app.use("/api/v1", contactRouter);
+
+const startServer = async () => {
+    try {
+        await dbConnection();
+        app.listen(process.env.PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        })
+    } catch (err) {
+        console.error(err.message);
+        process.exit(1)
+    }
+}
+
+startServer();
