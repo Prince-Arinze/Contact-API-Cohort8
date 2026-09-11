@@ -35,6 +35,14 @@ const contactSchema = new Schema({
     favorite: {
         type: Boolean,
         default: false
+    },
+    photo: {
+        type: String,
+        trim: true,
+        default: "",
+    },
+    photoPublicId: {
+        type: String
     }
 }, {
     timestamps: true

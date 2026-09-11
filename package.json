@@ -3,17 +3,34 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev:server": "node --watch server.js",
+    "dev:client": "pnpm --prefix client run dev",
+    "dev": "concurrently -n server,client -c green,cyan \"pnpm run dev:server\" \"pnpm run dev:client\"",
+    "build": "pnpm --prefix client install && pnpm --prefix client run build",
+    "start": "cross-env NODE_ENV=production node server.js"
   },
   "type": "module",
-  "keywords": ["Database", "Contact", "Update", "Delete", "Get", "MongoDB", "Express"],
+  "keywords": [
+    "Database",
+    "Contact",
+    "Update",
+    "Delete",
+    "Get",
+    "MongoDB",
+    "Express"
+  ],
   "author": "Prince Arinzechukwu Ndu",
   "license": "ISC",
   "description": "This is a contact API for creating, reading, updating, and deleting contact",
   "dependencies": {
+    "cloudinary": "^2.11.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mongoose": "^9.9.5"
+    "mongoose": "^9.9.5",
+    "multer": "^2.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3"
   }
 }
